@@ -219,6 +219,7 @@ body{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
     gap:30px;
+    justify-content:center;
 }
 
 .portfolio-card{
@@ -226,6 +227,7 @@ body{
     border-radius:12px;
     overflow:hidden;
     transition:0.3s;
+    max-width:380px;
 }
 
 .portfolio-card:hover{
