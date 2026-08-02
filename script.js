@@ -9,14 +9,20 @@ menu.addEventListener("click", () => {
 
 links.forEach(link => {
     link.addEventListener("click", (e) => {
-        e.preventDefault();
+        const href = link.getAttribute("href");
 
-        const target = document.querySelector(link.getAttribute("href"));
+        // Only intercept same-page anchor links (e.g. "#services").
+        // Let normal page links (e.g. "services.html") navigate as usual.
+        if (href.startsWith("#")) {
+            e.preventDefault();
 
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+            const target = document.querySelector(href);
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
         }
 
         navLinks.classList.remove("active");
@@ -110,3 +116,12 @@ function startCounters() {
 }
 
 window.addEventListener("scroll", startCounters);
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", () => {
+        item.classList.toggle("active");
+    });
+});
